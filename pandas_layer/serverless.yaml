@@ -1,0 +1,22 @@
+service: pandas-layer
+
+provider:
+  name: aws
+  runtime: python3.6
+  region: us-west-2
+  timeout: 450
+  stage: beta
+
+layers:
+  pandas:
+    path: pandas
+    CompatibleRuntimes: [
+      "python3.6"
+    ]
+resources:
+  Outputs:
+    PandasLayerExport:
+        Value:
+          Ref: PandasLambdaLayer
+        Export:
+          Name: PandasLambdaLayer

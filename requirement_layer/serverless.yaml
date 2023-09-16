@@ -1,0 +1,22 @@
+service: other-requirements
+
+provider:
+  name: aws
+  runtime: python3.6
+  region: us-west-2
+  timeout: 450
+  stage: beta
+
+layers:
+  other:
+    path: other
+    CompatibleRuntimes: [
+      "python3.6"
+    ]
+resources:
+  Outputs:
+    OtherRequirementsLayerExport:
+        Value:
+          Ref: OtherLambdaLayer
+        Export:
+          Name: OtherLambdaLayer
